@@ -2,7 +2,7 @@ window.addEventListener("load", () => {
       const canvas = document.querySelector("#canvas");
       const ctx = canvas.getContext("2d");
 
-      canvas.height = window.innerHeight - 80; 
+      canvas.height = window.innerHeight - 80; // space for toolbar
       canvas.width = window.innerWidth - 20;
 
       let painting = false;
@@ -24,12 +24,13 @@ window.addEventListener("load", () => {
 
       function startPosition(e) {
         painting = true;
-        draw(e);
+        ctx.beginPath(); // start a new path every time mouse is pressed
+        const {x, y} = getCoords(e);
+        ctx.moveTo(x, y); // move to the starting point
       }
 
       function finishedPosition() {
         painting = false;
-        ctx.beginPath();
       }
 
       function draw(e) {
@@ -41,8 +42,7 @@ window.addEventListener("load", () => {
 
         ctx.lineTo(x, y);
         ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(x, y);
+        ctx.moveTo(x, y); // set start point for next segment
       }
 
       // Mouse events
@@ -59,7 +59,6 @@ window.addEventListener("load", () => {
       document.getElementById("clear").addEventListener("click", () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
       });
-
       // Save drawing
     //   document.getElementById("save").addEventListener("click", () => {
     //     const link = document.createElement("a");
@@ -67,4 +66,5 @@ window.addEventListener("load", () => {
     //     link.href = canvas.toDataURL("image/png");
     //     link.click();
     //   });
+
     });

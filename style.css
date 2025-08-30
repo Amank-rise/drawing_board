@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#canvas {
+    border: 2px solid black;
+}
+ body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #f0f0f0;
+    }
+    #toolbar {
+      margin: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    canvas {
+      border: 2px solid black;
+      background: white;
+      cursor: crosshair;
+    }
+  
